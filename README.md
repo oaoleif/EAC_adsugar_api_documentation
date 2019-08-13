@@ -6,7 +6,7 @@ Official version of the EAC API (version 1.0). For questions or comments reach o
 
 
 Method: GET
-Base URL: https://static.adsugar.ch/api](https://static.adsugar.ch/api)
+Base URL: https://static.adsugar.ch/api
 Parameters:
 
 
