@@ -4,35 +4,38 @@ Official version of the EAC API (version 1.0). For questions or comments reach o
 
 # Request Format
 
+
 Method: GET
 Base URL: https://static.adsugar.ch/api](https://static.adsugar.ch/api)
 Parameters:
-|param|description | required |  example | 
-|--|--| --| --|
-| ord| randomly generated value, this should be unique for every request made to the API | no (if no value is being used, the ord parameter should be inlcuded in request, but given an empty string value.  Accepted values are alphanumeric| 998493ji9w9234
-|--|--| --| 
-| c| randomly generated value, this should be unique for every request made to the API, if using the ord= parameter, this value should differ from the ord. Accepted values are alphanumeric | yes| 8765483jjc9
-| t| A URI encoded set of custom targeting values (querystring params) associated with the targeting of line items in Ad Manager | yes (if no custom targeting, give a value of an empty string| t=pos%3Dtop%26foo%3Dbar 
-| iu| the full ad unit path corresponding to the targeted ad unit | yes| /25434/news/sports
-| sz| targeted ad size  | yes| sz=728x90 
-| npa| non personalized targeting for GDPR compliance. If no included the value is defaulted to 1 (for no personalized targeting) | no| npa=1 or npa=0  
-| ppid| unique publisher identifier for the user, to be used for custom ad targeting (should be a 32char hash) | no| ppid=0a196649d3aca92d3e06a90a1f28f60e 
+
+
+param|description|required|example 
+ ---------- | ---------- | ---------- | ----------
+ ord| randomly generated value, this should be unique for every request made to the API | no (if no value is being used, the ord parameter should be inlcuded in request, but given an empty string value.  Accepted values are alphanumeric| 998493ji9w9234
+ c| randomly generated value, this should be unique for every request made to the API, if using the ord= parameter, this value should differ from the ord. Accepted values are alphanumeric | yes| 8765483jjc9
+ t| A URI encoded set of custom targeting values (querystring params) associated with the targeting of line items in Ad Manager | yes (if no custom targeting, give a value of an empty string| t=pos%3Dtop%26foo%3Dbar 
+ iu| the full ad unit path corresponding to the targeted ad unit | yes| /25434/news/sports
+ sz| targeted ad size  | yes| sz=728x90 
+ npa| non personalized targeting for GDPR compliance. If no included the value is defaulted to 1 (for no personalized targeting) | no| npa=1 or npa=0  
+ ppid| unique publisher identifier for the user, to be used for custom ad targeting (should be a 32char hash) | no| ppid=0a196649d3aca92d3e06a90a1f28f60e 
 
 # Response Format
 Responses will always return  JSON-like object in the response, provided a valid HTTPS GET request has been made.
 The  object will contain all relevant information for serving the creative and its click information.
 
 Description of response object keys and expected usage:
-| Key Name | Description |
-|--|--|
-| constructed_image_path | This is the URL to be loaded in the email (or other platform) that points to the creative. Deconstructed you will notice it has the downloaded impression URL, followed by the destination URL. The downloaded impression URL will redirect to the destination URL and ensure the impression is counted in Ad Manager and EAC|
-| ad_click_url | The URL users should be sent to when clicking on the image creative. |
-| ad_image_url | The location of the destination creative served by the ad server. If using this instead of the constructed_image_path, the ad_impression_url MUST be executed as well, at (about) the same time as the ad_image_url. See ad_impression_url for more details|
-| ad_impression_url | The impression tracking URL to ensure a downloaded impression signal is sent to the adserver. If using this separated out from the ad_image_url, this should be sent as a GET request, either server-side or embedded as a 1x1 in an email. This is required to ensure accurate tracking.|
-| google_lineitem_id | The ID of the line item that was returned from Ad Manger |
-| google_creative_id | The id of the creative returned from Ad Manager |
-| eac_adcall_id | the unique id for the ad call, for internal EAC reference and troubleshooting |
-| status | A successful response will always be the value of "success", any error response will include some details about the error. |
+
+Key Name | Description 
+---------- | ----------
+constructed_image_path | This is the URL to be loaded in the email (or other platform) that points to the creative. Deconstructed you will notice it has the downloaded impression URL, followed by the destination URL. The downloaded impression URL will redirect to the destination URL and ensure the impression is counted in Ad Manager and EAC
+ad_click_url | The URL users should be sent to when clicking on the image creative. 
+ad_image_url | The location of the destination creative served by the ad server. If using this instead of the constructed_image_path, the ad_impression_url MUST be executed as well, at (about) the same time as the ad_image_url. See ad_impression_url for more details
+ad_impression_url | The impression tracking URL to ensure a downloaded impression signal is sent to the adserver. If using this separated out from the ad_image_url, this should be sent as a GET request, either server-side or embedded as a 1x1 in an email. This is required to ensure accurate tracking.
+google_lineitem_id | The ID of the line item that was returned from Ad Manger 
+google_creative_id | The id of the creative returned from Ad Manager 
+eac_adcall_id | the unique id for the ad call, for internal EAC reference and troubleshooting |
+status | A successful response will always be the value of "success", any error response will include some details about the error. 
 
 ## Example Request/Response ( with curl)
 
