@@ -36,6 +36,7 @@ google_lineitem_id | The ID of the line item that was returned from Ad Manger
 google_creative_id | The id of the creative returned from Ad Manager 
 eac_adcall_id | the unique id for the ad call, for internal EAC reference and troubleshooting |
 status | A successful response will always be the value of "success", any error response will include some details about the error. 
+html_format | The code rendered for HTML delivery.
 
 ## Example Request/Response ( with curl)
 
@@ -64,6 +65,7 @@ status | A successful response will always be the value of "success", any error 
     "google_lineitem_id": "5131854464", 
     "google_creative_id": "138277497522", 
     "eac_adcall_id": "f4851b7448a2bc7723a9d78f0278ec16",
+    "html_format": "<a href='https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjst-Xsgh6WhWLnwn5VIzta1fSezS14c3gDyT8dLcr1FF0dpFjyzFclC6GKU0j2-1NnuJNCWwUA9oBOTGZvDPU9BJpQSS79SqJbzGIT8FcoTppRe5-vwwF8fS4_eMwFanyOeB-Zd5SCk4fVCk-G-PKeTo5Mard90BcS6KsG6P6qN-24L_C2iPqYLiZSSkPEX62zSUcy4oRyK3idr-Etpo0z_VvvBVv-VBD47Nt52XKKafLstLUDEGx1IS2-q40K9IDxUG6UJrXYgyshCc9JoDaf8zDDMFvfaN&sig=Cg0ArKJSzMKf4Yaw28ZHEAE&urlfix=1&adurl=https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsvGWw97nxpWgcMn0qxZ9PrGG0LobajRB7O6Dqzz1GzHqdMONCp5lqTbiK9VEynunw08QjVs0BNcV_nqu704iQDID49zosBPVOtLSY-xH8DZbLzumuJWVZZSuf5JyAo_Ljcdm9GkTSvaitbzNPtJ3WnGW9PCvWYCdsBMLzCubKD9GW2QWQlB12-0jzmvajaaG62qBc8kQyb1ctiU-t0WH98JSObOayMX_1QweCIdMhZRLQdw9284oXKiyymJszVfjS7p1tAnfjD3Evv92Bauh6jr&sig=Cg0ArKJSzCosWtZY63YAEAE&urlfix=1&adurl=http://bit.ly/HUappstore' target='_blank'><img src='https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjst-Xsgh6WhWLnwn5VIzta1fSezS14c3gDyT8dLcr1FF0dpFjyzFclC6GKU0j2-1NnuJNCWwUA9oBOTGZvDPU9BJpQSS79SqJbzGIT8FcoTppRe5-vwwF8fS4_eMwFanyOeB-Zd5SCk4fVCk-G-PKeTo5Mard90BcS6KsG6P6qN-24L_C2iPqYLiZSSkPEX62zSUcy4oRyK3idr-Etpo0z_VvvBVv-VBD47Nt52XKKafLstLUDEGx1IS2-q40K9IDxUG6UJrXYgyshCc9JoDaf8zDDMFvfaN&sig=Cg0ArKJSzMKf4Yaw28ZHEAE&urlfix=1&adurl=https://tpc.googlesyndication.com/pagead/imgad?id=CICAgKCHv4rk7QEQARgBMggO4XVnebgvGg'></a>",
     "status": "success"
     }
 
