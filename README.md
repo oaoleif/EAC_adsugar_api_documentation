@@ -7,6 +7,15 @@ Official version of the EAC API (version 1.0). For questions or comments reach o
 
 Method: GET
 Base URL: https://static.adsugar.ch/api
+
+Headers:
+
+name|description
+ ---------- | ----------
+ User-Agent | User Agent of the device the ad will show on. If Serverisde an arbitrary  unique identifier of your System as User Agent is fine.
+ X-Forwarded-For | String of IP addresses 
+ 
+ 
 Parameters:
 
 
