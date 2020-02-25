@@ -95,29 +95,35 @@ native | hardcoded response value of "1" (as an integer, not string). When prese
 
 ## Example Request/Response (with curl) NATIVE ONLY
 
-curl -v https://static.adsugar.ch/api?ord=7987&c=6546&iu=/50536250/oao_test/btstest/adsugar&t=test%3Dnativetest&sz=100x100
 
-> GET /api?ord=7987&c=6546&iu=/50536250/oao_test/btstest/adsugar&t=test%3Dnativetest&sz=100x100 HTTP/2
-> Host: static.adsugar.ch
-> User-Agent: curl/7.64.1
-> Accept: */*
->
-* Connection state changed (MAX_CONCURRENT_STREAMS == 128)!
-< HTTP/2 200
-< content-type: application/json
-< content-length: 1620
-< date: Tue, 25 Feb 2020 13:50:58 GMT
-< x-amzn-requestid: 09c19d42-d3dc-4c27-bcc5-2fc99689d139
-< access-control-allow-origin: *
-< amp-access-control-allow-source-origin: amp@gmail.dev
-< access-control-allow-headers: amp4email-proxy-assertion
-< x-amz-apigw-id: IdLqYHsTIAMFeMA=
-< access-control-expose-headers: AMP-Access-Control-Allow-Source-Origin
-< x-amzn-trace-id: Root=1-5e552642-34db3e809fdb16e0cf709114;Sampled=0
-< x-cache: Miss from cloudfront
-< via: 1.1 6ed623541a1487ecd1bc71b49417e87c.cloudfront.net (CloudFront)
-< x-amz-cf-pop: LAX3-C1
-< x-amz-cf-id: 8Ew4sp5eDqwHtGRe2iOD0G3GLa54pNFriunMtC3bAmmi_XHWKTjGWg==
-<
-* Connection #0 to host static.adsugar.ch left intact
-{"image": "https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjssabmEkNli8hxG8YaZV9fBySP62nX19nPBc6wJKojQvD2SdIUPSq_6vwtXEigUfkd1uwgR0IZZqMMzwMH_dbjs4Ik-Jt_wG65SdzVMATmbcgszfqXHqbWjXGEi9FhZKuGclKrJ35eCGGo8qK5SEGlLr_bvePK-4IB6Ap_3EXSn0OkOOUW7RmkNStaXl2Ymk7ec-jWJm-CpPjutjNal7QqZYFwYVVc2tdTixvI934VWVlFLcHVF4fbp2znl8AU5IFsImXt7QvoDaqTxMJ37Ub4BXqD8&sig=Cg0ArKJSzGQSvQdTOlQZEAE&urlfix=1&adurl=https://d2bmyofwy5n4pb.cloudfront.net/91820ABD-A860-2220-5960BE1F05A26323.png", "header": "This is an example header", "subheader": "Everything you ever wanted to know", "text": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut dolor magna, interdum eu pulvinar eget, volutpat id quam. In fringilla mauris ac finibus vulputate. Quisque non auctor ante. Suspendisse potenti.", "click_url": "https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjssabmEkNli8hxG8YaZV9fBySP62nX19nPBc6wJKojQvD2SdIUPSq_6vwtXEigUfkd1uwgR0IZZqMMzwMH_dbjs4Ik-Jt_wG65SdzVMATmbcgszfqXHqbWjXGEi9FhZKuGclKrJ35eCGGo8qK5SEGlLr_bvePK-4IB6Ap_3EXSn0OkOOUW7RmkNStaXl2Ymk7ec-jWJm-CpPjutjNal7QqZYFwYVVc2tdTixvI934VWVlFLcHVF4fbp2znl8AU5IFsImXt7QvoDaqTxMJ37Ub4BXqD8&sig=Cg0ArKJSzGQSvQdTOlQZEAE&urlfix=1&adurl=https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsvqCGNO8g_pqcdiftqkf57I8f6RT_TCodnr2zYN0uTGnohUTcaWpN4EvuUXdL8z4pGj2a9D6Xlxis2To2qQuYeb6SANWWdxcHKVb0C0VxZRAKAi3zG1oEioAMTbyNqf5koxiWCwB8ONlse3ZJdJY5T7DC7LVXhKMrCmqy58shmzdoKbNu8zQ6G1h03RrBWSpD1ndvzZIdshrtWQhyhEyyO-3_F9Dc00phZl6mA_o7SNccnEdRulQZsWpp5gQaLn3U36i-vKeazeVFwdj9A&sig=Cg0ArKJSzOEKBXJzXRnKEAE&urlfix=1&adurl=https://www.adops.com", "native": 1}
+     curl -v https://static.adsugar.ch/api?ord=7987&c=6546&iu=/50536250/oao_test/btstest/adsugar&t=test%3Dnativetest&sz=100x100
+    
+    > GET /api?ord=7987&c=6546&iu=/50536250/oao_test/btstest/adsugar&t=test%3Dnativetest&sz=100x100 HTTP/2
+    > Host: static.adsugar.ch
+    > User-Agent: curl/7.64.1
+    > Accept: */*
+    >
+    * Connection state changed (MAX_CONCURRENT_STREAMS == 128)!
+    < HTTP/2 200
+    < content-type: application/json
+    < content-length: 1620
+    < date: Tue, 25 Feb 2020 13:50:58 GMT
+    < x-amzn-requestid: 09c19d42-d3dc-4c27-bcc5-2fc99689d139
+    < access-control-allow-origin: *
+    < amp-access-control-allow-source-origin: amp@gmail.dev
+    < access-control-allow-headers: amp4email-proxy-assertion
+    < x-amz-apigw-id: IdLqYHsTIAMFeMA=
+    < access-control-expose-headers: AMP-Access-Control-Allow-Source-Origin
+    < x-amzn-trace-id: Root=1-5e552642-34db3e809fdb16e0cf709114;Sampled=0
+    < x-cache: Miss from cloudfront
+    < via: 1.1 6ed623541a1487ecd1bc71b49417e87c.cloudfront.net (CloudFront)
+    < x-amz-cf-pop: LAX3-C1
+    < x-amz-cf-id: 8Ew4sp5eDqwHtGRe2iOD0G3GLa54pNFriunMtC3bAmmi_XHWKTjGWg==
+    <
+    * Connection #0 to host static.adsugar.ch left intact
+    {"image": "https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjssabmEkNli8hxG8YaZV9fBySP62nX19nPBc6wJKojQvD2SdIUPSq_6vwtXEigUfkd1uwgR0IZZqMMzwMH_dbjs4Ik-Jt_wG65SdzVMATmbcgszfqXHqbWjXGEi9FhZKuGclKrJ35eCGGo8qK5SEGlLr_bvePK-4IB6Ap_3EXSn0OkOOUW7RmkNStaXl2Ymk7ec-jWJm-CpPjutjNal7QqZYFwYVVc2tdTixvI934VWVlFLcHVF4fbp2znl8AU5IFsImXt7QvoDaqTxMJ37Ub4BXqD8&sig=Cg0ArKJSzGQSvQdTOlQZEAE&urlfix=1&adurl=https://d2bmyofwy5n4pb.cloudfront.net/91820ABD-A860-2220-5960BE1F05A26323.png",
+    "header": "This is an example header",
+    "subheader": "Everything you ever wanted to know",
+    "text": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut dolor magna, interdum eu pulvinar eget, volutpat id quam. In fringilla mauris ac finibus vulputate. Quisque non auctor ante. Suspendisse potenti.",
+    "click_url": "https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjssabmEkNli8hxG8YaZV9fBySP62nX19nPBc6wJKojQvD2SdIUPSq_6vwtXEigUfkd1uwgR0IZZqMMzwMH_dbjs4Ik-Jt_wG65SdzVMATmbcgszfqXHqbWjXGEi9FhZKuGclKrJ35eCGGo8qK5SEGlLr_bvePK-4IB6Ap_3EXSn0OkOOUW7RmkNStaXl2Ymk7ec-jWJm-CpPjutjNal7QqZYFwYVVc2tdTixvI934VWVlFLcHVF4fbp2znl8AU5IFsImXt7QvoDaqTxMJ37Ub4BXqD8&sig=Cg0ArKJSzGQSvQdTOlQZEAE&urlfix=1&adurl=https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsvqCGNO8g_pqcdiftqkf57I8f6RT_TCodnr2zYN0uTGnohUTcaWpN4EvuUXdL8z4pGj2a9D6Xlxis2To2qQuYeb6SANWWdxcHKVb0C0VxZRAKAi3zG1oEioAMTbyNqf5koxiWCwB8ONlse3ZJdJY5T7DC7LVXhKMrCmqy58shmzdoKbNu8zQ6G1h03RrBWSpD1ndvzZIdshrtWQhyhEyyO-3_F9Dc00phZl6mA_o7SNccnEdRulQZsWpp5gQaLn3U36i-vKeazeVFwdj9A&sig=Cg0ArKJSzOEKBXJzXRnKEAE&urlfix=1&adurl=https://www.adops.com",
+    "native": 1}
