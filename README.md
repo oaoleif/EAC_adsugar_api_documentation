@@ -4,7 +4,6 @@ Official version of the EAC API (version 1.0). For questions or comments reach o
 
 # Request Format
 
-
 Method: GET
 Base URL: https://static.adsugar.ch/api
 
@@ -17,6 +16,7 @@ name|description
  
  
 Parameters:
+*Note request parameters for native and display are identical, native format, however, will return a different JSON format, further examples are below*
 
 
 param|description|required|example 
@@ -29,7 +29,7 @@ param|description|required|example
  npa| non personalized targeting for GDPR compliance. If no included the value is defaulted to 1 (for no personalized targeting) | no| npa=1 or npa=0  
  ppid| unique publisher identifier for the user, to be used for custom ad targeting (should be a 32char hash) | no| ppid=0a196649d3aca92d3e06a90a1f28f60e 
 
-# Response Format
+# Response Format DISPLAY ONLY
 Responses will always return  JSON-like object in the response, provided a valid HTTPS GET request has been made.
 The  object will contain all relevant information for serving the creative and its click information.
 
@@ -37,7 +37,7 @@ Description of response object keys and expected usage:
 
 Key Name | Description 
 ---------- | ----------
-constructed_image_path | This is the URL to be loaded in the email (or other platform) that points to the creative. Deconstructed you will notice it has the downloaded impression URL, followed by the destination URL. The downloaded impression URL will redirect to the destination URL and ensure the impression is counted in Ad Manager and EAC
+constructed_image_path | This is the URL to be loaded in the email (or other platform) that points to the creative.
 ad_click_url | The URL users should be sent to when clicking on the image creative. 
 ad_image_url | The location of the destination creative served by the ad server. If using this instead of the constructed_image_path, the ad_impression_url MUST be executed as well, at (about) the same time as the ad_image_url. See ad_impression_url for more details
 ad_impression_url | The impression tracking URL to ensure a downloaded impression signal is sent to the adserver. If using this separated out from the ad_image_url, this should be sent as a GET request, either server-side or embedded as a 1x1 in an email. This is required to ensure accurate tracking.
@@ -47,7 +47,7 @@ eac_adcall_id | the unique id for the ad call, for internal EAC reference and tr
 status | A successful response will always be the value of "success", any error response will include some details about the error. 
 html_format | The code rendered for HTML delivery.
 
-## Example Request/Response ( with curl)
+## Example Request/Response (with curl) DISPLAY ONLY
 
      $ curl -v https://static.adsugar.ch/api?iu=/50536250/oao_test/btstest/adsugar&t=test%3Dadsugar&sz=300x250&c=872349237&ord=z1b2c3v5y67e
      ---
@@ -78,4 +78,46 @@ html_format | The code rendered for HTML delivery.
     "status": "success"
     }
 
-   
+# Response Format NATIVE ONLY
+Responses will always return  JSON-like object in the response, provided a valid HTTPS GET request has been made.
+The  object will contain all relevant information for serving the creative and its click information.
+
+Description of response object keys and expected usage:
+
+Key Name | Description 
+---------- | ----------
+image | This is the URL to be loaded in the email (or other platform) that points to the image path to be used in the native unit.
+ad_click_url | The URL users should be sent to when clicking on the image or text in the native unitcreative. 
+header | This is the text heading typically seen as a "title" in a native unit. I can contain text or HTML for additional formatting.
+subheader | An optional subheading block of text, often used below a header or title in a native ad unit. This can contain plaintext or HTML.
+text | The text content of the native unit- this can contain plaintext or additional text/HTML if needed.
+native | hardcoded response value of "1" (as an integer, not string). When present, informs the API response listener that this is a native ad.
+
+## Example Request/Response (with curl) NATIVE ONLY
+
+curl -v https://static.adsugar.ch/api?ord=7987&c=6546&iu=/50536250/oao_test/btstest/adsugar&t=test%3Dnativetest&sz=100x100
+
+> GET /api?ord=7987&c=6546&iu=/50536250/oao_test/btstest/adsugar&t=test%3Dnativetest&sz=100x100 HTTP/2
+> Host: static.adsugar.ch
+> User-Agent: curl/7.64.1
+> Accept: */*
+>
+* Connection state changed (MAX_CONCURRENT_STREAMS == 128)!
+< HTTP/2 200
+< content-type: application/json
+< content-length: 1620
+< date: Tue, 25 Feb 2020 13:50:58 GMT
+< x-amzn-requestid: 09c19d42-d3dc-4c27-bcc5-2fc99689d139
+< access-control-allow-origin: *
+< amp-access-control-allow-source-origin: amp@gmail.dev
+< access-control-allow-headers: amp4email-proxy-assertion
+< x-amz-apigw-id: IdLqYHsTIAMFeMA=
+< access-control-expose-headers: AMP-Access-Control-Allow-Source-Origin
+< x-amzn-trace-id: Root=1-5e552642-34db3e809fdb16e0cf709114;Sampled=0
+< x-cache: Miss from cloudfront
+< via: 1.1 6ed623541a1487ecd1bc71b49417e87c.cloudfront.net (CloudFront)
+< x-amz-cf-pop: LAX3-C1
+< x-amz-cf-id: 8Ew4sp5eDqwHtGRe2iOD0G3GLa54pNFriunMtC3bAmmi_XHWKTjGWg==
+<
+* Connection #0 to host static.adsugar.ch left intact
+{"image": "https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjssabmEkNli8hxG8YaZV9fBySP62nX19nPBc6wJKojQvD2SdIUPSq_6vwtXEigUfkd1uwgR0IZZqMMzwMH_dbjs4Ik-Jt_wG65SdzVMATmbcgszfqXHqbWjXGEi9FhZKuGclKrJ35eCGGo8qK5SEGlLr_bvePK-4IB6Ap_3EXSn0OkOOUW7RmkNStaXl2Ymk7ec-jWJm-CpPjutjNal7QqZYFwYVVc2tdTixvI934VWVlFLcHVF4fbp2znl8AU5IFsImXt7QvoDaqTxMJ37Ub4BXqD8&sig=Cg0ArKJSzGQSvQdTOlQZEAE&urlfix=1&adurl=https://d2bmyofwy5n4pb.cloudfront.net/91820ABD-A860-2220-5960BE1F05A26323.png", "header": "This is an example header", "subheader": "Everything you ever wanted to know", "text": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut dolor magna, interdum eu pulvinar eget, volutpat id quam. In fringilla mauris ac finibus vulputate. Quisque non auctor ante. Suspendisse potenti.", "click_url": "https://securepubads.g.doubleclick.net/pcs/view?xai=AKAOjssabmEkNli8hxG8YaZV9fBySP62nX19nPBc6wJKojQvD2SdIUPSq_6vwtXEigUfkd1uwgR0IZZqMMzwMH_dbjs4Ik-Jt_wG65SdzVMATmbcgszfqXHqbWjXGEi9FhZKuGclKrJ35eCGGo8qK5SEGlLr_bvePK-4IB6Ap_3EXSn0OkOOUW7RmkNStaXl2Ymk7ec-jWJm-CpPjutjNal7QqZYFwYVVc2tdTixvI934VWVlFLcHVF4fbp2znl8AU5IFsImXt7QvoDaqTxMJ37Ub4BXqD8&sig=Cg0ArKJSzGQSvQdTOlQZEAE&urlfix=1&adurl=https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsvqCGNO8g_pqcdiftqkf57I8f6RT_TCodnr2zYN0uTGnohUTcaWpN4EvuUXdL8z4pGj2a9D6Xlxis2To2qQuYeb6SANWWdxcHKVb0C0VxZRAKAi3zG1oEioAMTbyNqf5koxiWCwB8ONlse3ZJdJY5T7DC7LVXhKMrCmqy58shmzdoKbNu8zQ6G1h03RrBWSpD1ndvzZIdshrtWQhyhEyyO-3_F9Dc00phZl6mA_o7SNccnEdRulQZsWpp5gQaLn3U36i-vKeazeVFwdj9A&sig=Cg0ArKJSzOEKBXJzXRnKEAE&urlfix=1&adurl=https://www.adops.com", "native": 1}
